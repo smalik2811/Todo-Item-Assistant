@@ -1,11 +1,13 @@
 {
-  "name": "todo_item_assistant_backend",
+  "name": "todo_summary_assistant_backend",
   "version": "1.0.0",
-  "description": "Backend for the Todo Item Assignments App.",
+  "description": "Backend for the Todo Summary Assignments App.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "secure": "git rm --cached .env && echo '.env file removed from git tracking. Make sure to update your credentials.'"
   },
   "keywords": [
     "Node.js",
@@ -14,10 +16,17 @@
   "author": "SONU",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.10"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "firebase": "^11.8.1",
+    "helmet": "^7.1.0",
+    "winston": "^3.11.0"
   }
 }
