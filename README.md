@@ -81,6 +81,8 @@ For detailed setup and execution instructions, please navigate to the respective
 
 You can access a live preview of the application here: [https://todo-summary-assistant-frontend.onrender.com/](https://todo-summary-assistant-frontend.onrender.com/)
 
+Slack channel to see the summary being posted [https://join.slack.com/t/todosummaryas-1ws1848/shared_invite/zt-367qkjobm-WK4WQbVew~kjn5yU7DSrBw](https://join.slack.com/t/todosummaryas-1ws1848/shared_invite/zt-367qkjobm-WK4WQbVew~kjn5yU7DSrBw)
+
 **Note:** Since the application is hosted on a free platform, it might take a minute or two for the initial content to load. Please be patient.
 
 ---
