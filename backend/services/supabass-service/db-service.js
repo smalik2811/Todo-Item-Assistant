@@ -2,7 +2,8 @@ const getTodoItems = async (supabaseClient, {user_id}) => {
     return await supabaseClient
         .from('todos')
         .select('id, title, description, is_finished, created_at')
-        .eq("user_id", user_id);
+        .eq("user_id", user_id)
+        .order('created_at', {ascending: true});
 }
 
 const getUnfinishedTodoItems = async (supabaseClient, {user_id}) => {
@@ -10,7 +11,8 @@ const getUnfinishedTodoItems = async (supabaseClient, {user_id}) => {
         .from('todos')
         .select('title, description, created_at')
         .eq("user_id", user_id)
-        .eq("is_finished", false);
+        .eq("is_finished", false)
+        .order('created_at', {ascending: true});
 }
 
 const addTodoItem = async (supabaseClient, {user_id, title, description}) => {

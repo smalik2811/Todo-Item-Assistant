@@ -27,7 +27,7 @@ const validateRequest = (validations) => {
                 errors: errors.array(), 
                 path: req.path, 
                 body: req.body,
-                user_id: req.user_id 
+                user_id: req.user.id
             });
             return res.status(400).json({ 
                 message: "Validation error", 

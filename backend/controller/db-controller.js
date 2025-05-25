@@ -9,6 +9,7 @@ const {
     deleteTodoItem,
 } = require("../services/supabass-service/db-service");
 const Summariser = require("../services/gemini-service/summariser");
+const { postMessage } = require("../services/slack-service/webhooks");
 
 // Configure Winston logger
 const logger = winston.createLogger({
@@ -27,7 +28,7 @@ const logger = winston.createLogger({
 
 const getTodos = async (req, res) => {
 
-    const user_id = req.user_id
+    const user_id = req.user.id
 
     const {data, error} = await getTodoItems(supabaseClient, {user_id})
 
@@ -46,7 +47,7 @@ const getTodos = async (req, res) => {
 
 const getUnfinishedTodosSummary = async (req, res) => {
 
-    const user_id = req.user_id
+    const user_id = req.user.id
 
     const {data, error} = await getUnfinishedTodoItems(supabaseClient, {user_id})
 
@@ -60,10 +61,21 @@ const getUnfinishedTodosSummary = async (req, res) => {
         try {
             const summariser = new Summariser();
             const summary = await summariser.generateSummary(data);
+            logger.info('Summary generated successfully', { user_id, summary });
+            const slackMessage = `Hello @${req.user.email}\n${summary}`
+            const sendSlackMessage = await postMessage(slackMessage);
 
-            return res.status(200).json({
-                summary
-            });
+            if (sendSlackMessage) {
+                return res.status(200).json({
+                    summary
+                });
+            } else {
+                logger.error('Failed to send summary to Slack', { error, user_id });
+                return res.status(500).json({
+                    message: "Failed to generate summary. Please try again later."
+                });
+            }
+
         } catch (summaryError) {
             logger.error('Failed to generate summary', { error: summaryError, user_id });
 
@@ -75,7 +87,7 @@ const getUnfinishedTodosSummary = async (req, res) => {
 }
 
 const addTodo = async (req, res) => {
-    const user_id = req.user_id
+    const user_id = req.user.id
     const {title, description = ""} = req.body;
 
     // Input validation
@@ -122,7 +134,7 @@ const addTodo = async (req, res) => {
 }
 
 const editTodo = async (req, res) => {
-    const user_id = req.user_id
+    const user_id = req.user.id
     let {id, title, description = "", is_finished} = req.body;
 
     // Input validation
@@ -179,8 +191,8 @@ const editTodo = async (req, res) => {
 }
 
 const deleteTodo = async (req, res) => {
-    const user_id = req.user_id
-    const {id} = req.body;
+    const user_id = req.user.id
+    const {id} = req.params.id
 
     // Input validation
     if (!id) {

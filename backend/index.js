@@ -1,5 +1,6 @@
 require("dotenv").config()
 const express = require("express")
+const cors = require("cors")
 const helmet = require("helmet")
 const rateLimit = require("express-rate-limit")
 const winston = require("winston")
@@ -23,6 +24,16 @@ const logger = winston.createLogger({
 
 const app = express()
 const PORT = process.env.PORT || 3000
+
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 200,
+    preflightContinue: false,
+}))
 
 // Apply security headers
 app.use(helmet())
@@ -60,7 +71,7 @@ app.use(
                 if (error) {
                     return res.status(401).send("Invalid token");
                 } else {
-                    req.user_id = data.user.id
+                    req.user = data.user
                     next()
                 }
 
