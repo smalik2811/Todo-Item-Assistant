@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "cross-env NODE_ENV=production node index.js",
+    "start": "node index.js",
     "secure": "git rm --cached .env && echo '.env file removed from git tracking. Make sure to update your credentials.'"
   },
   "keywords": [
