@@ -1,49 +1,51 @@
 # Todo Summary Assistant
 
-## Objective
-Build a fully functional full-stack application where a user can:
-- Create and manage personal to-do items.
-- Click a button to summarize all pending to-dos using an actual LLM (e.g., OpenAI, Anthropic, Cohere, Mistral, Gemini, etc.).
-- Send the generated summary to a Slack channel.
+<details>
+  <summary>Problem Statement and Requirements</summary>
+  
+  ## Objective
+  Build a fully functional full-stack application where a user can:
+  - Create and manage personal to-do items.
+  - Click a button to summarize all pending to-dos using an actual LLM (e.g., OpenAI, Anthropic, Cohere, Mistral, Gemini, etc.).
+  - Send the generated summary to a Slack channel.
 
-## Requirements
+  ## Requirements
 
-### Frontend
-- Use React to build the UI.
-- **Functionality:**
-    - Add, edit, delete to-do items.
-    - View list of current to-dos.
-    - A button to generate and send the summary.
-    - Show a success/failure message for the Slack operation.
+  ### Frontend
+  - Use React to build the UI.
+  - **Functionality:**
+      - Add, edit, delete to-do items.
+      - View list of current to-dos.
+      - A button to generate and send the summary.
+      - Show a success/failure message for the Slack operation.
 
-### Backend
-- Use Node.js (Express).
-- The backend should expose the following endpoints:
-    - `GET /todos` – Fetch all todos.
-    - `POST /todos` – Add a new todo.
-    - `DELETE /todos/:id` – Delete a todo.
-    - `POST /summarize` – Summarize todos and send to Slack.
+  ### Backend
+  - Use Node.js (Express).
+  - The backend should expose the following endpoints:
+      - `GET /todos` – Fetch all todos.
+      - `POST /todos` – Add a new todo.
+      - `DELETE /todos/:id` – Delete a todo.
+      - `POST /summarize` – Summarize todos and send to Slack.
 
-### LLM Integration
-- Integrate with a real LLM API (like OpenAI, Cohere, Gemini, or similar with free-tier access).
-- Use the LLM to summarize the to-do list meaningfully — don’t simulate or mock this.
+  ### LLM Integration
+  - Integrate with a real LLM API (like OpenAI, Cohere, Gemini, or similar with free-tier access).
+  - Use the LLM to summarize the to-do list meaningfully — don’t simulate or mock this.
 
-### Slack Integration
-- Use Slack Incoming Webhooks to post the summary to a Slack channel.
-- Include instructions for how to configure this in your README.
+  ### Slack Integration
+  - Use Slack Incoming Webhooks to post the summary to a Slack channel.
+  - Include instructions for how to configure this in your README.
 
-### Hosting & Database
-- Use Supabase for backend/database hosting.
-- You may use a free-tier PostgreSQL/Supabase DB to store the to-dos.
+  ### Hosting & Database
+  - Use Supabase for backend/database hosting.
+  - You may use a free-tier PostgreSQL/Supabase DB to store the to-dos.
 
-## Stack Flexibility
-You are free to choose your own stack and tools (within the boundaries above) as long as:
-- You use React for the frontend.
-- The backend is built in Node.js.
-- You integrate with a real LLM API and Slack.
-- The core functionality and flow are implemented as described.
-
-This assignment is about solving the problem using working integrations. Creativity and implementation details are up to you.
+  ## Stack Flexibility
+  You are free to choose your own stack and tools (within the boundaries above) as long as:
+  - You use React for the frontend.
+  - The backend is built in Node.js.
+  - You integrate with a real LLM API and Slack.
+  - The core functionality and flow are implemented as described.
+</details>
 
 ## Design and Architecture Decisions
 
