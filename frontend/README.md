@@ -60,7 +60,7 @@ This frontend application might require environment variables to connect to the 
     **Example `frontend/.env.local`:**
     ```ini
     # URL of the backend
-    VITE_BACKEND_URL=http://localhost
+    VITE_BACKEND_URL=http://localhost:3000
     # Adjust the hostname as per your backend setup.
     ```
 

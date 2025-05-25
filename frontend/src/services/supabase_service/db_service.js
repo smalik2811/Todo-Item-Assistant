@@ -3,7 +3,7 @@ import { store } from '../../state/store.js';
 import { logout, login } from '../../state/authSlice.js'; // Added login
 import { refreshToken } from './auth_service.js'; // Added refreshToken import
 
-const API_URL = `${config.backendUrl}:${config.backendPort}/api/v1/db`;
+const API_URL = `${config.backendUrl}/api/v1/db`;
 
 // Helper to parse JWT
 const parseJwt = (token) => {
