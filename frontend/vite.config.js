@@ -12,5 +12,9 @@ export default defineConfig(({ mode }) => {
         server: {
             port: Number(env.VITE_PORT) || 5173
         },
+        build: {
+            outDir: "dist"
+        },
+        base: "./"
     }
 })
