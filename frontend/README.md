@@ -57,11 +57,17 @@ This frontend application might require environment variables to connect to the 
 2.  **Configure Variables:**
     Open the `.env` file and add the necessary environment variables. The most common variable you'll need is the URL for your backend API. Vite exposes environment variables prefixed with `VITE_` to your frontend code.
 
-    **Example `frontend/.env.local`:**
+    **Example `frontend/.env`:**
     ```ini
-    # URL of the backend
-    VITE_BACKEND_URL=http://localhost:3000
-    # Adjust the hostname as per your backend setup.
+    VITE_PORT=5173
+    VITE_ENV='development'
+
+    # Supabase
+    VITE_SUPABASE_URL="<Your Supabase Url>"
+    VITE_SUPABASE_KEY="<Your Supabase Key>"
+
+    # Backend
+    VITE_BACKEND_URL="<Complete url of the backend like http://0.0.0.1:3000"
     ```
 
     **Important:**
