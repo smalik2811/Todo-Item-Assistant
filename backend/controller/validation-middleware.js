@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator');
+const { body, param, validationResult } = require('express-validator');
 const winston = require('winston');
 
 const logger = winston.createLogger({
@@ -74,7 +74,7 @@ const editTodoValidation = [
 
 // Validation rules for deleting a todoItem
 const deleteTodoValidation = [
-    body('id')
+    param('id')
         .notEmpty().withMessage('ID is required')
 ];
 

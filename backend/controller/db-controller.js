@@ -192,7 +192,7 @@ const editTodo = async (req, res) => {
 
 const deleteTodo = async (req, res) => {
     const user_id = req.user.id
-    const {id} = req.params.id
+    const id = req.params.id
 
     // Input validation
     if (!id) {
