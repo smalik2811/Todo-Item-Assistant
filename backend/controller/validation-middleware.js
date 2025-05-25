@@ -36,10 +36,10 @@ const validateRequest = (validations) => {
         }
 
         // Sanitize inputs
-        if (req.body.title) {
+        if (req.body && req.body.title) {
             req.body.title = req.body.title.trim();
         }
-        if (req.body.description) {
+        if (req.body && req.body.description) {
             req.body.description = req.body.description.trim();
         }
 
